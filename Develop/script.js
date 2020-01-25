@@ -28,29 +28,29 @@ function passwordoptions() {
   lowercase = confirm("Do you want lowercase letters?")
   if (lowercase) {
     chosen_characters = chosen_characters.append((lower_alph));
-    password = password.append(generatecharacter(lower_alph));
+    password = password.push(generatecharacter(lower_alph));
   }
 
   upper = confirm('Do you want uppercase letters?')
   if (upper) {
     chosen_characters = chosen_characters.append((upper_alph));
-    password = password.append(generatecharacter(upper_alph));
+    password = password.push(generatecharacter(upper_alph));
   }
   numbers = confirm('Do you want numbers?')
   if (numbers) {
   chosen_characters = chosen_characters.append((digits));
-  password = password.append(generatecharacter(digits));
+  password = password.push(generatecharacter(digits));
   }
   special = confirm('Do you want special characters?(e.g. ?, !, @)')
   if (special) {
   chosen_characters = chosen_characters.append((special_characters));
-  password = password.append(generatecharacter(special_characters));
+  password = password.push(generatecharacter(special_characters));
   }
-  function writePassword() {
-    for (let i = 0; i < characters.length; i++) {
+  
+  for (let i = 0; i < characters.length; i++) {
       let password_character = generatecharacter(chosen_characters);
       password.push(password_character);
-    }
+  }
 
     return password.join('');
   }
