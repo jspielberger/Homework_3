@@ -1,63 +1,67 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 //*arrays needed
 
 
-lower_alph = "abcdefghijklmnopqrstuvwxyz".split('')
-upper_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('')
-special_characters = ['?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '{', '}', '[', ']', '`', '|', '_', '+', ' ', '/', '>', '<', ':', ';']
-digits = ['0', '1', '2', '3', '5', '6', '7', '8', '9',]
-chosen_characters = []
-password = ['']
+
+  // Write password to the #password input
+let generatepassword = function(){
+
+  let lower_alph = "abcdefghijklmnopqrstuvwxyz".split('');
+  let upper_alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  let special_characters = ['?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '{', '}', '[', ']', '`', '|', '_', '+', ' ', '/', '>', '<', ':', ';'];
+  let digits = ['0', '1', '2', '3', '5', '6', '7', '8', '9'];
 
 
 
-function generatecharacter(array) {
-  var num = Math.floor(Math.random() * array.length);
-  randomcharacter = array[num];
-  return randomcharacter;
-}
-
-// Write password to the #password input
-function generatepassword() {
-  let characters = null;
-  while (characters < 8 || characters > 128 || NaN(characters)) {
-    characters = parseInt(prompt("Choose a number between 8 and 128"));
+  function generatecharacter(array) {
+    let num = Math.floor(Math.random()* array.length);
+    let randomcharacter = array[num];
+    return randomcharacter;
   }
+    let character_length = parseInt(prompt("Time to decide how big your password will be. Please choose a number between 8 and 128"));
+    let chosen_characters = [];
+    let password = [];
+    let lowercase = confirm("Do you want lowercase letters?"); 
+    if(lowercase) {
+      chosen_characters.push(lower_alph);
+      password.push(generatecharacter(lower_alph));
+    }
+    else {
 
-  let lowercase = confirm("Do you want lowercase letters?");
-  if (lowercase) {
-    chosen_characters = chosen_characters.append((lower_alph));
-    password = password.push(generatecharacter(lower_alph));
-  }
+    }
 
-  let upper = confirm('Do you want uppercase letters?');
-  if (upper) {
-    chosen_characters = chosen_characters.append((upper_alph));
-    password = password.push(generatecharacter(upper_alph));
-  }
-  let numbers = confirm('Do you want numbers?');
-  if (numbers) {
-  chosen_characters = chosen_characters.append((digits));
-  password = password.push(generatecharacter(digits));
-  }
-  let special = confirm('Do you want special characters?(e.g. ?, !, @)');
-  if (special) {
-  chosen_characters = chosen_characters.append((special_characters));
-  password = password.push(generatecharacter(special_characters));
-  }
-  
-  for (let i = 0; i < characters; i++) {
+    let upper = confirm('Do you want uppercase letters?');
+    if(upper) {
+      chosen_characters.push(upper_alph);
+      password.push(generatecharacter(upper_alph));
+    }
+    else{
+
+    }
+    let numbers = confirm('Do you want numbers?');
+    if(numbers) {
+      chosen_characters.push(digits);
+      password.push(generatecharacter(digits));
+    }
+    else{
+
+    }
+    let special = confirm('Do you want special characters?(e.g. ?, !, @)');
+    if(special) {
+      chosen_characters.push(special_characters);
+      password.push(generatecharacter(special_characters));
+    }
+    else{
+
+    }
+
+    for (let i = 0; i < character_length; i++) {
       let password_character = generatecharacter(chosen_characters);
       password.push(password_character);
-  }
-  return password.join('');
+    }
+  return alert(password.join('',','));
 }
+generateBtn.addEventListener("click", generatepassword);
 
-function writePassword() {
-  returned_password = generatepassword()
-  let returned_password_text = document.querySelector("#password")
-  returned_password_text.value = returned_password;
-}
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
