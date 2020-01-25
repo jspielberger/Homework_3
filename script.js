@@ -26,19 +26,15 @@ let digits = ['0', '1', '2', '3', '5', '6', '7', '8', '9'];
     let character_length = parseInt(prompt("Great news! It's time to decide how big your password will be! Remember, you need to choose a number between 8 and 128!"));
     if (isNaN(character_length) === true) {
       alert('Nuh, uh! Password length must be provided as a number, not a letter silly!');
-      return;
+      return ;
     }
-  
-    // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-    if (character_length < 8) {
+      if (character_length < 8) {
       alert('Password length must be at least 8 characters');
-      return;
+      return ;
     }
-  
-    // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-    if (character_length > 128) {
-      alert('Password length must less than 129 characters');
-      return;
+      if (character_length > 128) {
+      alert('Password length must be less than 128 characters');
+      return ;
     }
    
     let lowercase = confirm("Do you want lowercase letters?"); 
@@ -83,7 +79,7 @@ let digits = ['0', '1', '2', '3', '5', '6', '7', '8', '9'];
       uppper === false
     ) {
       alert('Must select at least one character type');
-      return;
+      return href="lowercase";
     }
     
     for (let i = 0; i < character_length; i++) {
